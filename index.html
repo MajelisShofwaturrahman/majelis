@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Majelis Shofwaturrahman</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+  :root {
+    --primary: #0d47a1;
+    --primary-dark: #072f6b;
+    --bg: #ffffff;
+    --text: #1e1e1e;
+    --muted: #6b7280;
+    --card: #ffffff;
+    --radius: 14px;
+    --shadow: rgba(0,0,0,0.08);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    animation: fadeIn 1s ease-in-out; /* Animasi fade-in untuk seluruh body */
+  }
+
+  header {
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 999;
+    box-shadow: 0 2px 8px var(--shadow);
+    padding: .8rem 1rem;
+    animation: slideDown 0.8s ease-out; /* Animasi slide down untuk header */
+  }
+
+  nav {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .logo { 
+    font-weight: 700; 
+    font-size: 1.4rem; 
+    color: var(--primary); 
+    transition: transform 0.3s ease; /* Transisi hover pada logo */
+  }
+  .logo:hover { transform: scale(1.05); }
+  nav a { 
+    margin-left: 1rem; 
+    text-decoration: none; 
+    color: var(--text); 
+    font-weight: 600; 
+    transition: color 0.3s ease, transform 0.3s ease; /* Transisi hover pada link nav */
+  }
+  nav a:hover { color: var(--primary); transform: translateY(-2px); }
+
+  /* slider - Diubah menjadi grid untuk akurasi layout: menggunakan grid untuk menampilkan foto/video dalam grid responsif, tanpa animasi slide */
+  .slider {
+    max-width: 1200px;
+    margin: 1rem auto;
+    border-radius: var(--radius);
+    box-shadow: 0 10px 20px var(--shadow);
+    position: relative;
+    animation: fadeInUp 1s ease-out 0.5s both; /* Animasi fade-in dari bawah */
+  }
+  .slides {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+  .slides img, .slides video {
+    width: 100%;
+    height: 800px;
+    object-fit: cover;
+    border-radius: var(--radius);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transisi hover pada gambar/video */
+  }
+  .slides img:hover, .slides video:hover { transform: scale(1.05); box-shadow: 0 15px 30px var(--shadow); }
+
+  .container { 
+    max-width: 1200px; 
+    margin: 2rem auto; 
+    padding: 0 1rem; 
+    animation: fadeInUp 1s ease-out 0.7s both; /* Animasi fade-in untuk container */
+  }
+  .hero {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    padding: 4rem 1rem;
+    border-radius: var(--radius);
+    text-align: center;
+    color: white;
+    animation: fadeInUp 1s ease-out 0.3s both; /* Animasi fade-in untuk hero */
+  }
+  .btn { 
+    padding: .9rem 1.3rem; 
+    border-radius: 12px; 
+    border: none; 
+    background: white; 
+    color: var(--primary-dark); 
+    font-weight: 700; 
+    cursor: pointer; 
+    transition: background 0.3s ease, transform 0.3s ease; /* Transisi hover pada button */
+  }
+  .btn:hover { background: var(--primary); color: white; transform: translateY(-3px); }
+
+  .card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin: 1rem 0;
+    box-shadow: 0 8px 20px var(--shadow);
+    text-align: center; /* Agar gambar di tengah */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transisi hover pada card */
+    animation: fadeInUp 1s ease-out 0.9s both; /* Animasi fade-in untuk card */
+  }
+  .card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px var(--shadow); }
+  .card img {
+    width: 100%;
+    max-width: 300px; /* Batasi lebar maksimal untuk responsivitas */
+    height: auto;
+    border-radius: var(--radius);
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease; /* Transisi hover pada gambar di card */
+  }
+  .card img:hover { transform: scale(1.05); }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+
+  table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    animation: fadeIn 1s ease-out 1.1s both; /* Animasi fade-in untuk table */
+  }
+  th, td { 
+    padding: 1rem; 
+    border-bottom: 1px solid #e5e7eb; 
+    transition: background 0.3s ease; /* Transisi hover pada row table */
+  }
+  th { background: var(--primary); color: white; }
+  tr:hover { background: rgba(13, 71, 161, 0.1); }
+
+  /* Donasi */
+  .donasi-box img {
+    width: 100%;
+    max-width: 240px; /* Responsif, tapi batasi lebar */
+    border-radius: 12px;
+    box-shadow: 0 6px 15px var(--shadow);
+    transition: transform 0.3s ease; /* Transisi hover pada gambar donasi */
+  }
+  .donasi-box img:hover { transform: scale(1.05); }
+  .donasi-info { margin-top: 1rem; font-weight: 600; }
+  .donasi-contact {
+    margin-top: .5rem;
+    font-size: 1.1rem;
+    color: var(--primary-dark);
+    font-weight: 700;
+  }
+
+  footer {
+    text-align: center;
+    padding: 2rem;
+    background: #f4f6fb;
+    margin-top: 3rem;
+    color: var(--muted);
+    animation: fadeInUp 1s ease-out 1.3s both; /* Animasi fade-in untuk footer */
+  }
+
+  /* Media Sosial - Ditambahkan untuk link YouTube dan Instagram */
+  .social-media {
+    margin-top: 1rem;
+  }
+  .social-media a {
+    margin: 0 0.5rem;
+    text-decoration: none;
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: color 0.3s ease, transform 0.3s ease; /* Transisi hover pada link sosial */
+  }
+  .social-media a:hover { color: var(--primary-dark); transform: scale(1.1); }
+
+  /* Keyframes untuk animasi */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes slideDown {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+  }
+
+  /* Responsivitas ditingkatkan untuk semua device */
+  @media (max-width: 480px) { /* Ponsel kecil */
+    .logo { font-size: 1.2rem; }
+    nav a { margin-left: 0.5rem; font-size: 0.9rem; }
+    .slides img, .slides video { height: 180px; }
+    .hero { padding: 2rem 1rem; }
+    .card { padding: 1rem; }
+    .grid { grid-template-columns: 1fr; gap: 1rem; }
+    .donasi-box img { max-width: 150px; }
+    .social-media a { font-size: 1rem; margin: 0 0.3rem; }
+  }
+  @media (max-width: 768px) { /* Tablet */
+    .logo { font-size: 1.3rem; }
+    nav { flex-direction: column; align-items: flex-start; }
+    nav .menu { margin-top: 0.5rem; }
+    .slides { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+    .slides img, .slides video { height: 250px; }
+    .hero { padding: 3rem 1rem; }
+    .card img { max-width: 250px; }
+    .grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+    .donasi-box img { max-width: 200px; }
+    table th, table td { padding: 0.8rem; font-size: 0.9rem; }
+  }
+  @media (max-width: 1024px) { /* Tablet besar / Laptop kecil */
+    .slides { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    .hero { padding: 3.5rem 1rem; }
+    .grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  }
+  @media (min-width: 1200px) { /* Desktop besar */
+    .container { max-width: 1400px; }
+    .slides { grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); }
+    .hero { padding: 5rem 1rem; }
+    .grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">Majelis Shofwaturrahman</div>
+    <div class="menu">
+      <a href="#dokumentasi">Dokumentasi</a>
+      <a href="#jadwal">Jadwal</a>
+      <a href="#donasi">Donasi</a>
+    </div>
+  </nav>
+</header>
+
+<!-- SLIDER - Grid responsif dengan animasi hover -->
+<div class="slider">
+  <div class="slides">
+   
+    <video src="rekap isra miraj.mp4" autoplay ></video>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="container hero">
+  <h1>Selamat Datang di Majelis Shofwaturrahman</h1>
+  <p>Pusat informasi kajian dan dokumentasi kegiatan Majelis Shofwaturrahman.</p>
+</section>
+
+<!-- DOKUMENTASI -->
+<section id="dokumentasi" class="container">
+  <h2>Dokumentasi Kegiatan</h2>
+  <p class="muted">Kumpulan foto dan video kegiatan majelis.</p>
+  <div class="grid">
+    <div class="card">
+      <img src="aset1.jpg" alt="Foto Kegiatan Majelis Shofwaturrahman 1">
+    </div>
+    <div class="card">
+      <img src="aset2.jpg" alt="Foto Kegiatan Majelis Shofwaturrahman 2">
+    </div>
+    <div class="card">
+      <video controls style="width: 100%; max-width: 300px; height: auto; border-radius: var(--radius);">
+        <source src="video.mp4" type="video/mp4">
+        Browser Anda tidak mendukung video.
+      </video>
+    </div>
+  </div>
+</section>
+
+<!-- JADWAL -->
+<section id="jadwal" class="container">
+  <h2>Jadwal Pengajian Ramadhan</h2>
+  <div class="card">
+    <table>
+      <tr><th>Hari</th><th>Waktu</th><th>Lokasi</th></tr>
+      <tr><td>Sabtu, 28 Februari 2026</td><td>21.00</td><td>Majelis Shofwaturrahman</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- DONASI -->
+<section id="donasi" class="container">
+  <h2>Donasi Dakwah</h2>
+  <div class="card donasi-box" style="text-align:center;">
+    <p>Silakan lakukan donasi melalui QRIS berikut:</p>
+    <img src="qris.jpeg" alt="QRIS Donasi Majelis Shofwaturrahman">
+    <div class="donasi-info">Atau transfer ke rekening:</div>
+    <div class="donasi-contact">BCA 7025231601 a.n Ahmad Dainuri</div>
+    <p style="margin-top:1rem">Konfirmasi Donasi:</p>
+    <a href="https://wa.me/6289507934280" class="btn" target="_blank">Konfirmasi via WhatsApp</a>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 Majelis Shofwaturrahman</p>
+  <!-- Media Sosial - Ditambahkan link ke YouTube dan Instagram -->
+  <div class="social-media">
+    <a href="https://www.youtube.com/@SHOFWATURRAHMAN_OFFICIAL" target="_blank">YouTube</a>
+    <a href="instagram.com/shofwaturrahman_official/?hl=id" target="_blank">Instagram</a>
+    <a href="tiktok.com/@shofwaturrahman.official?_t=ZS-8yBzY7BjgCF&_r=1" target="_blank">Tiktok</a>
+  </div>
+</footer>
+
+</body>
+</html>
