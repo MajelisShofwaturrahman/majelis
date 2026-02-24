@@ -3,385 +3,385 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Majelis Shofwaturrahman</title>
+<title>Majelis Shofwaturrahman | Kajian Islam & Pengajian Rutin</title>
+
+<meta name="description" content="Majelis Shofwaturrahman adalah pusat kajian Islam, pengajian rutin, dakwah, dan dokumentasi kegiatan Islami. Informasi jadwal, lokasi, dan donasi dakwah.">
+
+<meta name="keywords" content="Majelis Shofwaturrahman, pengajian, kajian Islam, majelis taklim, dakwah Islam">
+
+<meta name="author" content="Majelis Shofwaturrahman">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Majelis Shofwaturrahman – Kajian & Dakwah Islam">
+<meta property="og:description" content="Pusat informasi pengajian, kajian Islam, jadwal, lokasi, dan donasi dakwah Majelis Shofwaturrahman.">
+<meta property="og:image" content="https://majelisshofwaturrahman.github.io/majelis/og-image.jpg">
+<meta property="og:url" content="https://majelisshofwaturrahman.github.io/majelis/">
+<meta property="og:site_name" content="Majelis Shofwaturrahman">
+<link rel="canonical" href="https://majelisshofwaturrahman.github.io/majelis/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+:root{
+  --primary:#2563eb;
+  --secondary:#0f172a;
+  --bg:#f8fafc;
+  --card:#ffffff;
+  --text:#0f172a;
+  --muted:#64748b;
+  --radius:16px;
+  --shadow:0 10px 30px rgba(0,0,0,.08);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text)}
 
-  :root {
-    --primary: #0d47a1;
-    --primary-dark: #072f6b;
-    --bg: #ffffff;
-    --text: #1e1e1e;
-    --muted: #6b7280;
-    --card: #ffffff;
-    --radius: 14px;
-    --shadow: rgba(0,0,0,0.08);
-  }
+/* HEADER */
+header{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);box-shadow:var(--shadow)}
+nav{max-width:1200px;margin:auto;padding:1rem;display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:700;font-size:1.3rem;color:var(--primary)}
+.menu{display:flex;gap:1rem}
+.menu a{padding:.6rem 1.2rem;border-radius:999px;text-decoration:none;font-weight:600;color:var(--text);transition:.3s}
+.menu a:hover{background:var(--primary);color:#fff}
 
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    animation: fadeIn 1s ease-in-out; /* Animasi fade-in untuk seluruh body */
-  }
+/* LOGO */
+.logo-wrap{
+  display:flex;
+  align-items:center;
+  gap:.8rem;
+}
 
-  header {
-    position: sticky;
-    top: 0;
-    background: var(--bg);
-    z-index: 999;
-    box-shadow: 0 2px 8px var(--shadow);
-    padding: .8rem 1rem;
-    animation: slideDown 0.8s ease-out; /* Animasi slide down untuk header */
-  }
+.logo-img{
+  width:56px;      /* BESAR tapi tetap elegan */
+  height:56px;
+  object-fit:contain;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,.15));
+}
 
-  nav {
-    max-width: 1200px;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  .logo { 
-    font-weight: 700; 
-    font-size: 1.4rem; 
-    color: var(--primary); 
-    transition: transform 0.3s ease; /* Transisi hover pada logo */
-    animation: pulse 2s infinite; /* Animasi pulse untuk logo */
-  }
-  .logo:hover { transform: scale(1.05); }
-  nav a { 
-    margin-left: 1rem; 
-    text-decoration: none; 
-    color: var(--text); 
-    font-weight: 600; 
-    transition: color 0.3s ease, transform 0.3s ease; /* Transisi hover pada link nav */
-  }
-  nav a:hover { color: var(--primary); transform: translateY(-2px); }
+.logo-text{
+  font-weight:700;
+  font-size:1.35rem;
+  color:var(--primary);
+  white-space:nowrap;
+}
 
-  /* slider - Diubah menjadi grid untuk akurasi layout: menggunakan grid untuk menampilkan foto/video dalam grid responsif, tanpa animasi slide */
-  .slider {
-    max-width: 1200px;
-    margin: 1rem auto;
-    border-radius: var(--radius);
-    box-shadow: 0 10px 20px var(--shadow);
-    position: relative;
-    /* Animasi scroll ditambahkan */
-  }
-  .slides {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1rem;
-  }
-  .slides img, .slides video {
-    width: 100%;
-    height: 800px;
-    object-fit: cover;
-    border-radius: var(--radius);
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transisi hover pada gambar/video */
-    animation: zoomIn 1.5s ease-out; /* Animasi zoom in untuk gambar/video */
-  }
-  .slides img:hover, .slides video:hover { transform: scale(1.05); box-shadow: 0 15px 30px var(--shadow); }
-
-  .container { 
-    max-width: 1200px; 
-    margin: 2rem auto; 
-    padding: 0 1rem; 
-    /* Animasi scroll ditambahkan */
-  }
-  .hero {
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-    padding: 4rem 1rem;
-    border-radius: var(--radius);
-    text-align: center;
-    color: white;
-    /* Animasi scroll ditambahkan */
-  }
-  .btn { 
-    padding: .9rem 1.3rem; 
-    border-radius: 12px; 
-    border: none; 
-    background: white; 
-    color: var(--primary-dark); 
-    font-weight: 700; 
-    cursor: pointer; 
-    transition: background 0.3s ease, transform 0.3s ease; /* Transisi hover pada button */
-    animation: bounceIn 1s ease-out; /* Animasi bounce in untuk button */
-  }
-  .btn:hover { background: var(--primary); color: white; transform: translateY(-3px); }
-
-  .card {
-    background: var(--card);
-    border-radius: var(--radius);
-    padding: 1.5rem;
-    margin: 1rem 0;
-    box-shadow: 0 8px 20px var(--shadow);
-    text-align: center; /* Agar gambar di tengah */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transisi hover pada card */
-    /* Animasi scroll ditambahkan */
-  }
-  .card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px var(--shadow); }
-  .card img {
-    width: 100%;
-    max-width: 300px; /* Batasi lebar maksimal untuk responsivitas */
-    height: auto;
-    border-radius: var(--radius);
-    margin-bottom: 1rem;
-    transition: transform 0.3s ease; /* Transisi hover pada gambar di card */
-  }
-  .card img:hover { transform: scale(1.05); }
-
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.5rem;
+/* RESPONSIVE */
+@media(max-width:768px){
+  .logo-img{
+    width:46px;
+    height:46px;
   }
 
-  table { 
-    width: 100%; 
-    border-collapse: collapse; 
-    /* Animasi scroll ditambahkan */
+  .logo-text{
+    font-size:1.15rem;
   }
-  th, td { 
-    padding: 1rem; 
-    border-bottom: 1px solid #e5e7eb; 
-    transition: background 0.3s ease; /* Transisi hover pada row table */
-  }
-  th { background: var(--primary); color: white; }
-  tr:hover { background: rgba(13, 71, 161, 0.1); }
+}
 
-  /* Donasi */
-  .donasi-box img {
-    width: 100%;
-    max-width: 240px; /* Responsif, tapi batasi lebar */
-    border-radius: 12px;
-    box-shadow: 0 6px 15px var(--shadow);
-    transition: transform 0.3s ease; /* Transisi hover pada gambar donasi */
-    animation: rotateIn 1s ease-out; /* Animasi rotate in untuk gambar donasi */
-  }
-  .donasi-box img:hover { transform: scale(1.05); }
-  .donasi-info { margin-top: 1rem; font-weight: 600; }
-  .donasi-contact {
-    margin-top: .5rem;
-    font-size: 1.1rem;
-    color: var(--primary-dark);
-    font-weight: 700;
+@media(max-width:480px){
+  .logo-img{
+    width:42px;
+    height:42px;
   }
 
-  footer {
-    text-align: center;
-    padding: 2rem;
-    background: #f4f6fb;
-    margin-top: 3rem;
-    color: var(--muted);
-    /* Animasi scroll ditambahkan */
+  .logo-text{
+    font-size:1.05rem;
+  }
+}
+
+/* HAMBURGER BUTTON */
+.menu-toggle{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  background:#fff;
+  border:none;
+  padding:10px;
+  border-radius:12px;
+  cursor:pointer;
+  box-shadow:var(--shadow);
+}
+
+.menu-toggle span{
+  width:22px;
+  height:3px;
+  background:var(--secondary);
+  border-radius:5px;
+  transition:.3s;
+}
+
+/* MOBILE MODE */
+@media (max-width: 768px){
+  .menu{
+    position:absolute;
+    top:70px;
+    right:1rem;
+    background:#fff;
+    flex-direction:column;
+    width:220px;
+    padding:1rem;
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    display:none;
+    animation:fadeDown .3s ease;
   }
 
-  /* Media Sosial - Ditambahkan untuk link YouTube dan Instagram */
-  .social-media {
-    margin-top: 1rem;
-  }
-  .social-media a {
-    margin: 0 0.5rem;
-    text-decoration: none;
-    color: var(--primary);
-    font-weight: 600;
-    font-size: 1.1rem;
-    transition: color 0.3s ease, transform 0.3s ease; /* Transisi hover pada link sosial */
-    animation: bounceInUp 1s ease-out; /* Animasi bounce in up untuk link sosial */
-  }
-  .social-media a:hover { color: var(--primary-dark); transform: scale(1.1); }
-
-  /* Animasi scroll */
-  .animate-on-scroll {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 1s ease-out, transform 1s ease-out;
-  }
-  .animate-on-scroll.visible {
-    opacity: 1;
-    transform: translateY(0);
+  .menu.active{
+    display:flex;
   }
 
-  /* Keyframes untuk animasi */
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  @keyframes slideDown {
-    from { transform: translateY(-100%); }
-    to { transform: translateY(0); }
-  }
-  @keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-  }
-  @keyframes zoomIn {
-    from { transform: scale(0.8); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-  }
-  @keyframes bounceIn {
-    0% { transform: scale(0.3); opacity: 0; }
-    50% { transform: scale(1.05); }
-    70% { transform: scale(0.9); }
-    100% { transform: scale(1); opacity: 1; }
-  }
-  @keyframes rotateIn {
-    from { transform: rotate(-180deg); opacity: 0; }
-    to { transform: rotate(0deg); opacity: 1; }
-  }
-  @keyframes bounceInUp {
-    0% { transform: translateY(30px); opacity: 0; }
-    60% { transform: translateY(-10px); opacity: 1; }
-    100% { transform: translateY(0); }
+  .menu a{
+    padding:.8rem 1rem;
+    border-radius:12px;
   }
 
-  /* Responsivitas ditingkatkan untuk semua device */
-  @media (max-width: 480px) { /* Ponsel kecil */
-    .logo { font-size: 1.2rem; }
-    nav a { margin-left: 0.5rem; font-size: 0.9rem; }
-    .slides img, .slides video { height: 180px; }
-    .hero { padding: 2rem 1rem; }
-    .card { padding: 1rem; }
-    .grid { grid-template-columns: 1fr; gap: 1rem; }
-    .donasi-box img { max-width: 150px; }
-    .social-media a { font-size: 1rem; margin: 0 0.3rem; }
+  .menu-toggle{
+    display:flex;
   }
-  @media (max-width: 768px) { /* Tablet */
-    .logo { font-size: 1.3rem; }
-    nav { flex-direction: column; align-items: flex-start; }
-    nav .menu { margin-top: 0.5rem; }
-    .slides { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
-    .slides img, .slides video { height: 250px; }
-    .hero { padding: 3rem 1rem; }
-    .card img { max-width: 250px; }
-    .grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
-    .donasi-box img { max-width: 200px; }
-    table th, table td { padding: 0.8rem; font-size: 0.9rem; }
-  }
-  @media (max-width: 1024px) { /* Tablet besar / Laptop kecil */
-    .slides { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-    .hero { padding: 3.5rem 1rem; }
-    .grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
-  }
-  @media (min-width: 1200px) { /* Desktop besar */
-    .container { max-width: 1400px; }
-    .slides { grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); }
-    .hero { padding: 5rem 1rem; }
-    .grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
-  }
+}
+
+/* ANIMATION */
+@keyframes fadeDown{
+  from{opacity:0; transform:translateY(-10px)}
+  to{opacity:1; transform:translateY(0)}
+}
+
+/* HERO */
+.hero{max-width:1200px;margin:2rem auto;padding:4rem 1rem;border-radius:var(--radius);background:linear-gradient(135deg,#2563eb,#1e3a8a);color:#fff;text-align:center}
+.hero h1{font-size:2.5rem;margin-bottom:.5rem}
+.hero p{opacity:.9}
+
+/* SECTION */
+.container{max-width:1200px;margin:3rem auto;padding:0 1rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem}
+.card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:1.5rem;text-align:center;transition:.3s}
+.card:hover{transform:translateY(-6px)}
+.card img,video{width:100%;border-radius:var(--radius)}
+
+/* MAP */
+.map-wrapper{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.map-wrapper iframe{width:100%;height:400px;border:0}
+
+/* TABLE */
+table{width:100%;border-collapse:collapse}
+th,td{padding:1rem;border-bottom:1px solid #e5e7eb;text-align:left}
+th{background:var(--primary);color:#fff}
+
+/* DONASI */
+.btn{display:inline-block;margin-top:1rem;padding:.8rem 1.4rem;border-radius:999px;background:var(--primary);color:#fff;font-weight:600;text-decoration:none;transition:.3s}
+.btn:hover{background:#1e40af}
+
+/* FOOTER */
+footer{text-align:center;padding:2rem;margin-top:4rem;color:var(--muted)}
+.social a{margin:0 .5rem;color:var(--primary);font-size:1.4rem}
+
+@media(max-width:768px){
+  .hero h1{font-size:1.9rem}
+  .menu{flex-wrap:wrap}
+}
+
+/* SCROLL ANIMATION */
+.animate-on-scroll{
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity .8s ease, transform .8s ease;
+}
+
+.animate-on-scroll.show{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* VARIASI ARAH (OPSIONAL) */
+.from-left{transform:translateX(-40px)}
+.from-right{transform:translateX(40px)}
+.from-left.show,
+.from-right.show{transform:translateX(0)}
+
+/* PAMFLET JADWAL */
+.pamflet-card{
+  padding:1rem;
+}
+
+.pamflet-img{
+  width:100%;
+  max-width:600px;   /* biar tidak terlalu besar di desktop */
+  margin:auto;
+  display:block;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  transition:.3s;
+}
+
+.pamflet-img:hover{
+  transform:scale(1.02);
+}
 </style>
 </head>
 <body>
 
 <header>
   <nav>
-    <div class="logo">Majelis Shofwaturrahman</div>
+    <div class="logo-wrap">
+      <img src="lgo shof.png" alt="Logo Majelis Shofwaturrahman" class="logo-img">
+      <span class="logo-text">Majelis Shofwaturrahman</span>
+    </div>
+  
+    <!-- Hamburger Button -->
+    <button class="menu-toggle" aria-label="Toggle Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  
     <div class="menu">
       <a href="#dokumentasi">Dokumentasi</a>
+      <a href="#sholawat">Sholawat</a>
       <a href="#jadwal">Jadwal</a>
+      <a href="#lokasi">Lokasi</a>
       <a href="#donasi">Donasi</a>
     </div>
   </nav>
 </header>
-
-<!-- SLIDER - Grid responsif dengan animasi hover -->
-<div class="slider animate-on-scroll">
-  <div class="slides">
-   
-    <video src="222.mp4" muted autoplay loop  ></video>
-  </div>
-</div>
-
-<!-- HERO -->
-<section class="container hero animate-on-scroll">
-  <h1>Selamat Datang di Majelis Shofwaturrahman</h1>
-  <p>Pusat informasi kajian dan dokumentasi kegiatan Majelis Shofwaturrahman.</p>
+<!-- SLIDER - Grid responsif dengan animasi hover --> <div class="slider animate-on-scroll"> <div class="slides">
+  <video
+  src="222.mp4"
+  muted
+  autoplay
+  loop
+  playsinline
+  poster="fallback.jpg">
+</video>
+  </div> </div>
+<section class="hero animate-on-scroll">
+  <h1>Majelis Shofwaturrahman</h1>
+  <p>Pusat Informasi Kajian, Dakwah, dan Dokumentasi Kegiatan</p>
 </section>
 
-<!-- DOKUMENTASI -->
 <section id="dokumentasi" class="container animate-on-scroll">
   <h2>Dokumentasi Kegiatan</h2>
-  <p class="muted">Kumpulan foto dan video kegiatan majelis.</p>
   <div class="grid">
-    <div class="card animate-on-scroll">
-      <img src="aset1.jpg" alt="Foto Kegiatan Majelis Shofwaturrahman 1">
+    <div class="card" >
+      <img src="aset1.jpg" alt="Dokumentasi kegiatan pengajian Majelis Shofwaturrahman"></div>
+    <div class="card"><img src="aset4.jpg"  loading="lazy"alt="Dokumentasi kegiatan pengajian Majelis Shofwaturrahman"></div>
+    <div class="card"><video controls src="video.mp4"  loading="lazy" alt="Dokumentasi kegiatan pengajian Majelis Shofwaturrahman"></video></div>
+    <div class="card"><img src="aset5.jpg"  loading="lazy"alt="Dokumentasi kegiatan pengajian Majelis Shofwaturrahman"></div>
+    <div class="card"><img src="aset6.jpg" loading="lazy" alt="Dokumentasi kegiatan pengajian Majelis Shofwaturrahman"></div>
+    <div class="card"><img src="aset7.jpg" loading="lazy" alt="Dokumentasi kegiatan pengajian Majelis Shofwaturrahman"></div>
+  </div>
+</section>
+<section id="sholawat" class="container animate-on-scroll">
+  <h2>Sholawat</h2>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Sholawatullahi Taghsya</h3>
+      
+      <a href="Sholawatullahi Taghsya.pdf" download class="btn">
+        Download PDF
+      </a>
     </div>
-    <div class="card animate-on-scroll">
-      <img src="aset4.jpg" alt="Foto Kegiatan Majelis Shofwaturrahman 2">
+
+    <div class="card">
+      <h3>Shollu Ala Nuriladzi</h3>
+      
+      <a href="Shollu Ala Nuriladzi.pdf" download class="btn">
+        Download PDF
+      </a>
     </div>
-    <div class="card animate-on-scroll">
-      <video controls style="width: 100%; max-width: 300px; height: auto; border-radius: var(--radius);">
-        <source src="video.mp4" type="video/mp4">
-        Browser Anda tidak mendukung video.
-      </video>
+
+    <div class="card">
+      <h3>Birosulillah</h3>
+      
+      <a href="Birosulillah.pdf" download class="btn">
+        Download PDF
+      </a>
     </div>
-    <div class="card animate-on-scroll">
-      <img src="aset5.jpg" alt="Foto Kegiatan Majelis Shofwaturrahman 2">
+    
+    <div class="card">
+      <h3>Ya Sayyidi Ya Rasulallah</h3>
+      
+      <a href="Ya Sayyidi ya rasulallah.pdf" download class="btn">
+        Download PDF
+      </a>
     </div>
-    <div class="card animate-on-scroll">
-      <img src="aset6.jpg" alt="Foto Kegiatan Majelis Shofwaturrahman 2">
-    </div>
-    <div class="card animate-on-scroll">
-      <img src="aset7.jpg" alt="Foto Kegiatan Majelis Shofwaturrahman 2">
+  
+    <div class="card">
+      <h3>Ya Sayyidi Ya Rasulullah Khuz Biyadi</h3>
+      <a href="Ya Sayyidi Ya Rasulullah Khuz Biyadi.pdf" download class="btn">
+        Download PDF
+      </a>
     </div>
   </div>
 </section>
-
-<!-- JADWAL -->
 <section id="jadwal" class="container animate-on-scroll">
-  <h2>Jadwal Pengajian Ramadhan</h2>
-  <div class="card animate-on-scroll">
-    <table>
-      <tr><th>Hari</th><th>Waktu</th><th>Lokasi</th></tr>
-      <tr><td>Sabtu, 28 Februari 2026</td><td>21.00</td><td>Majelis Shofwaturrahman</td></tr>
-    </table>
+  <h2>Jadwal Pengajian</h2>
+
+  <div class="card pamflet-card">
+    <img 
+      src="jadwal.jpg" 
+      alt="Pamflet Jadwal Pengajian Majelis Shofwaturrahman"
+      class="pamflet-img"
+    >
   </div>
 </section>
 
-<!-- DONASI -->
+<section id="lokasi" class="container animate-on-scroll">
+  <h2>Lokasi Majelis</h2>
+  <div class="map-wrapper">
+    <iframe src="https://www.google.com/maps?q=Majelis%20Shofwaturrahman&output=embed" loading="lazy"></iframe>
+  </div>
+</section>
+
 <section id="donasi" class="container animate-on-scroll">
   <h2>Donasi Dakwah</h2>
-  <div class="card donasi-box animate-on-scroll" style="text-align:center;">
-    <p>Silakan lakukan donasi melalui QRIS berikut:</p>
-    <img src="qris.jpeg" alt="QRIS Donasi Majelis Shofwaturrahman">
-    <div class="donasi-info">Atau transfer ke rekening:</div>
-    <div class="donasi-contact">BCA 7025231601 a.n Ahmad Dainuri</div>
-    <p style="margin-top:1rem">Konfirmasi Donasi:</p>
-    <a href="https://wa.me/6289507934280" class="btn" target="_blank">Konfirmasi via WhatsApp</a>
+  <div class="card">
+    <p>Scan QRIS atau transfer ke rekening berikut:</p>
+    <img src="qris.jpeg" alt="QRIS" style="max-width:240px">
+    <p><strong>BCA 7025231601</strong><br>a.n Ahmad Dainuri</p>
+    <a href="https://wa.me/6289507934280" target="_blank" class="btn">Konfirmasi WhatsApp</a>
   </div>
 </section>
 
-<footer class="animate-on-scroll">
-  <p>&copy; 2025 Majelis Shofwaturrahman</p>
-  <!-- Media Sosial - Ditambahkan link ke YouTube dan Instagram -->
-  <div class="social-media">
-    <a href="https://www.youtube.com/@SHOFWATURRAHMAN_OFFICIAL" target="_blank">YouTube</a>
-    <a href="https://www.instagram.com/shofwaturrahman_official/?hl=id" target="_blank">Instagram</a>
-    <a href="https://www.tiktok.com/@shofwaturrahman.official?_t=ZS-8yBzY7BjgCF&_r=1" target="_blank">Tiktok</a>
+<footer>
+  <p>© 2025 Majelis Shofwaturrahman</p>
+  <div class="social">
+    <a href="https://www.youtube.com/@SHOFWATURRAHMAN_OFFICIAL" target="_blank"><i class='bx bxl-youtube'></i></a>
+    <a href="https://www.instagram.com/shofwaturrahman_official" target="_blank"><i class='bx bxl-instagram'></i></a>
+    <a href="https://www.tiktok.com/@shofwaturrahman.official" target="_blank"><i class='bx bxl-tiktok'></i></a>
   </div>
 </footer>
 
+</body>
 <script>
-  // Animasi scroll menggunakan Intersection Observer
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, {
-    threshold: 0.1 // Elemen dianggap terlihat jika 10% masuk viewport
+  
+  const toggle = document.querySelector('.menu-toggle');
+  const menu = document.querySelector('.menu');
+  
+  toggle.addEventListener('click', () => {
+    menu.classList.toggle('active');
   });
 
-  // Amati semua elemen dengan kelas animate-on-scroll
-  document.querySelectorAll('.animate-on-scroll').forEach(el => {
-    observer.observe(el);
-  });
+  /* SCROLL ANIMATION LOGIC */
+  const scrollElements = document.querySelectorAll('.animate-on-scroll');
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('show');
+        }
+      });
+    },
+    {
+      threshold: 0.15
+    }
+  );
+
+  scrollElements.forEach(el => observer.observe(el));
+  
+  
 </script>
 
-</body>
 </html>
+
