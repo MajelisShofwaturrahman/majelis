@@ -23,6 +23,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 
+<link rel="stylesheet" href="css/style.css">
 <style>
 :root{
   --primary:#2563eb;
@@ -216,6 +217,280 @@ footer{text-align:center;padding:2rem;margin-top:4rem;color:var(--muted)}
 .pamflet-img:hover{
   transform:scale(1.02);
 }
+/* SHOLAWAT LIST */
+.sholawat-list{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:.8rem;
+  margin-top:1.2rem;
+}
+
+.sholawat-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:.7rem 1rem;
+  background:#fff;
+  border-radius:12px;
+  box-shadow:0 4px 14px rgba(0,0,0,.06);
+}
+
+.sholawat-item h3{
+  margin:0;
+  font-size:.95rem;
+}
+
+/* MODAL */
+.sholawat-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.8);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:3000;
+  padding:1rem;
+}
+
+.sholawat-modal.active{
+  display:flex;
+}
+
+.sholawat-content{
+  position:relative;
+  max-width:900px;
+  width:100%;
+  text-align:center;
+}
+
+.sholawat-content img{
+  max-width:100%;
+  max-height:85vh;
+  border-radius:14px;
+  box-shadow:0 20px 50px rgba(0,0,0,.4);
+}
+
+/* CONTROL */
+.close-modal{
+  position:absolute;
+  top:-50px;
+  right:0;
+  background:#fff;
+  border:none;
+  border-radius:50%;
+  width:40px;
+  height:40px;
+  font-size:1.5rem;
+  cursor:pointer;
+}
+
+.nav-btn{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(255,255,255,.9);
+  border:none;
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  font-size:1.3rem;
+  cursor:pointer;
+}
+
+.prev{left:-55px}
+.next{right:-55px}
+
+@media(max-width:768px){
+  .prev{left:10px}
+  .next{right:10px}
+}
+
+/* PDF MODAL */
+.pdf-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.8);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:3000;
+  padding:1rem;
+}
+
+.pdf-modal.active{
+  display:flex;
+}
+
+.pdf-box{
+  position:relative;
+  width:100%;
+  max-width:900px;
+  height:90vh;
+  background:#fff;
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 20px 50px rgba(0,0,0,.4);
+}
+
+.pdf-box iframe{
+  width:100%;
+  height:100%;
+  border:none;
+}
+
+.pdf-close{
+  position:absolute;
+  top:12px;
+  right:12px;
+  background:#fff;
+  border:none;
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  font-size:1.4rem;
+  cursor:pointer;
+  box-shadow:0 6px 16px rgba(0,0,0,.2);
+}
+
+/* BUTTON QOSIDAH MODERN */
+.qosidah-btn{
+  display:flex;
+  align-items:center;
+  gap:.5rem;
+  padding:.55rem 1.1rem;
+  border-radius:999px;
+  background:linear-gradient(135deg,#2563eb,#1e40af);
+  color:#fff;
+  font-weight:600;
+  font-size:.85rem;
+  border:none;
+  cursor:pointer;
+  transition:all .3s ease;
+  box-shadow:0 6px 18px rgba(37,99,235,.35);
+}
+
+.qosidah-btn i{
+  font-size:1.1rem;
+}
+
+.qosidah-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 28px rgba(37,99,235,.5);
+}
+
+.qosidah-btn:active{
+  transform:scale(.96);
+}
+
+/* MOBILE */
+@media(max-width:480px){
+  .qosidah-btn{
+    font-size:.8rem;
+    padding:.45rem .9rem;
+  }
+}
+
+/* SEARCH QOSIDAH */
+.qosidah-search{
+  display:flex;
+  align-items:center;
+  gap:.6rem;
+  background:#fff;
+  padding:.7rem 1rem;
+  border-radius:999px;
+  box-shadow:0 4px 14px rgba(0,0,0,.08);
+  max-width:420px;
+  margin:1rem 0 1.5rem;
+}
+
+.qosidah-search i{
+  font-size:1.2rem;
+  color:var(--muted);
+}
+
+.qosidah-search input{
+  border:none;
+  outline:none;
+  width:100%;
+  font-family:'Poppins',sans-serif;
+  font-size:.9rem;
+  color:var(--text);
+}
+
+.qosidah-search input::placeholder{
+  color:var(--muted);
+}
+
+.slider video{
+  width:100%;
+  max-height:70vh;
+  object-fit:cover;
+  border-radius:var(--radius);
+}
+
+@media(max-width:768px){
+  .slider video{
+    max-height:45vh;
+  }
+}
+
+@media(max-width:480px){
+  nav{
+    padding:.8rem;
+  }
+
+  .menu{
+    width:100%;
+    right:0;
+  }
+}
+
+@media(max-width:480px){
+  .sholawat-item{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:.6rem;
+  }
+
+  .qosidah-btn{
+    width:100%;
+    justify-content:center;
+  }
+}
+
+@media(max-width:480px){
+  .pdf-box{
+    height:85vh;
+    border-radius:12px;
+  }
+
+  .pdf-close{
+    top:8px;
+    right:8px;
+  }
+}
+
+.map-wrapper iframe{
+  min-height:260px;
+}
+
+@media(max-width:480px){
+  .map-wrapper iframe{
+    min-height:220px;
+  }
+}
+
+footer{
+  padding:2.5rem 1rem;
+  line-height:1.6;
+}
+
+@media(max-width:480px){
+  #shareWhatsApp{
+    width:100%;
+    font-size:.9rem;
+  }
+}
 </style>
 </head>
 <body>
@@ -235,6 +510,7 @@ footer{text-align:center;padding:2rem;margin-top:4rem;color:var(--muted)}
     </button>
   
     <div class="menu">
+      <a href="#home">Home</a>
       <a href="#dokumentasi">Dokumentasi</a>
       <a href="#sholawat">Sholawat</a>
       <a href="#jadwal">Jadwal</a>
@@ -243,19 +519,16 @@ footer{text-align:center;padding:2rem;margin-top:4rem;color:var(--muted)}
     </div>
   </nav>
 </header>
-<!-- SLIDER - Grid responsif dengan animasi hover --> <div class="slider animate-on-scroll"> <div class="slides">
-  <video
-  src="222.mp4"
-  muted
-  autoplay
-  loop
-  playsinline
-  poster="fallback.jpg">
-</video>
-  </div> </div>
-<section class="hero animate-on-scroll">
-  <h1>Majelis Shofwaturrahman</h1>
-  <p>Pusat Informasi Kajian, Dakwah, dan Dokumentasi Kegiatan</p>
+
+<section id="home" class="animate-on-scroll">
+  <div class="slider">
+    <video src="222.mp4" muted autoplay loop playsinline poster="fallback.jpg"></video>
+  </div>
+
+  <section class="hero">
+    <h1>Majelis Shofwaturrahman</h1>
+    <p>Pusat Informasi Kajian, Dakwah, dan Dokumentasi Kegiatan</p>
+  </section>
 </section>
 
 <section id="dokumentasi" class="container animate-on-scroll">
@@ -270,52 +543,84 @@ footer{text-align:center;padding:2rem;margin-top:4rem;color:var(--muted)}
     <div class="card"><img src="aset7.jpg" loading="lazy" alt="Dokumentasi kegiatan pengajian Majelis Shofwaturrahman"></div>
   </div>
 </section>
+
 <section id="sholawat" class="container animate-on-scroll">
-  <h2>Sholawat</h2>
-
-  <div class="grid">
-    <div class="card">
-      <h3>Sholawatullahi Taghsya</h3>
-      
-      <a href="Sholawatullahi Taghsya.pdf" download class="btn">
-        Download PDF
-      </a>
-    </div>
-
-    <div class="card">
-      <h3>Shollu Ala Nuriladzi</h3>
-      
-      <a href="Shollu Ala Nuriladzi.pdf" download class="btn">
-        Download PDF
-      </a>
-    </div>
-
-    <div class="card">
-      <h3>Birosulillah</h3>
-      
-      <a href="Birosulillah.pdf" download class="btn">
-        Download PDF
-      </a>
-    </div>
-    
-    <div class="card">
-      <h3>Ya Sayyidi Ya Rasulallah</h3>
-      
-      <a href="Ya Sayyidi ya rasulallah.pdf" download class="btn">
-        Download PDF
-      </a>
-    </div>
-  
-    <div class="card">
-      <h3>Ya Sayyidi Ya Rasulullah Khuz Biyadi</h3>
-      <a href="Ya Sayyidi Ya Rasulullah Khuz Biyadi.pdf" download class="btn">
-        Download PDF
-      </a>
-    </div>
+  <h2>Kumpulan Qosidah</h2>
+  <div class="qosidah-search">
+    <i class='bx bx-search'></i>
+    <input 
+      type="text" 
+      id="qosidahSearch" 
+      placeholder="Search"
+      aria-label="Cari Qosidah"
+    >
   </div>
+  <div class="sholawat-item">
+    <h3>Qosidah Burdah</h3>
+    <button class="qosidah-btn open-pdf" data-pdf="qosidah burdah.pdf">
+      <i class='bx bx-star'></i>
+      Buka Qosidah
+    </button>
+  </div>
+
+  <div class="sholawat-item">
+    <h3>Maulid Simtudduror</h3>
+    <button class="qosidah-btn open-pdf" data-pdf="simtuduror.pdf">
+      <i class='bx bx-star'></i>
+      Buka Qosidah
+    </button>
+  </div>
+
+  <div class="sholawat-item">
+    <h3>Shollu ala Nuriladzi</h3>
+    <button class="qosidah-btn open-pdf" data-pdf="Shollu ala Nuriladzi.pdf">
+      <i class='bx bx-book-open'></i>
+      Buka Qosidah
+    </button>
+  </div>
+
+  <div class="sholawat-item">
+    <h3>Birosulillah</h3>
+    <button class="qosidah-btn open-pdf" data-pdf="Birosulillah.pdf">
+      <i class='bx bx-book-open'></i>
+      Buka Qosidah
+    </button>
+  </div>
+
+  <div class="sholawat-item">
+    <h3>Ya Sayyidi Ya Rasulallah</h3>
+    <button class="qosidah-btn open-pdf" data-pdf="Ya Sayyidi ya rasulallah.pdf">
+      <i class='bx bx-book-open'></i>
+      Buka Qosidah
+    </button>
+  </div>
+
+  <div class="sholawat-item">
+    <h3>Mabrokal Yaum</h3>
+    <button class="qosidah-btn open-pdf" data-pdf="Mabrokal Yaum.pdf">
+      <i class='bx bx-book-open'></i>
+      Buka Qosidah
+    </button>
+  </div>
+
+  <div class="sholawat-item">
+    <h3>Ya Sayyidi Ya Rasulallah Khuz Biyadi</h3>
+    <button class="qosidah-btn open-pdf" data-pdf="Khuzbiyadi.pdf">
+      <i class='bx bx-book-open'></i>
+      Buka Qosidah
+    </button>
 </section>
+
+<!-- MODAL PDF -->
+<div class="pdf-modal" id="pdfModal">
+  <div class="pdf-box">
+    <button class="pdf-close">&times;</button>
+    <iframe id="pdfFrame" src=""></iframe>
+  </div>
+</div>
+
 <section id="jadwal" class="container animate-on-scroll">
-  <h2>Jadwal Pengajian</h2>
+  <h2>Jadwal Majelis</h2>
 
   <div class="card pamflet-card">
     <img 
@@ -323,12 +628,17 @@ footer{text-align:center;padding:2rem;margin-top:4rem;color:var(--muted)}
       alt="Pamflet Jadwal Pengajian Majelis Shofwaturrahman"
       class="pamflet-img"
     >
-      <br>
+    <br>
     <img 
     src="jadwal1.jpg" 
     alt="Pamflet Jadwal Pengajian Majelis Shofwaturrahman"
     class="pamflet-img"
   >
+  </div>
+  <div style="text-align:left; margin-top:1.2rem;">
+    <button class="btn" id="shareWhatsApp">
+      <i class='bx bxl-whatsapp'></i> Share Jadwal ke WhatsApp
+    </button>
   </div>
 </section>
 
@@ -336,7 +646,16 @@ footer{text-align:center;padding:2rem;margin-top:4rem;color:var(--muted)}
   <h2>Lokasi Majelis</h2>
   <div class="map-wrapper">
     <iframe src="https://www.google.com/maps?q=Majelis%20Shofwaturrahman&output=embed" loading="lazy"></iframe>
+    
   </div>
+  <a 
+  href="https://www.google.com/maps?q=Majelis%20Shofwaturrahman" 
+  target="_blank" 
+  rel="noopener"
+  class="btn"
+>
+  <i class='bx bx-map'></i> Buka di Google Maps
+</a>
 </section>
 
 <section id="donasi" class="container animate-on-scroll">
@@ -359,6 +678,7 @@ footer{text-align:center;padding:2rem;margin-top:4rem;color:var(--muted)}
 </footer>
 
 </body>
+
 <script>
   
   const toggle = document.querySelector('.menu-toggle');
@@ -386,7 +706,67 @@ footer{text-align:center;padding:2rem;margin-top:4rem;color:var(--muted)}
 
   scrollElements.forEach(el => observer.observe(el));
   
-  
+
+    let images = [];
+    let index = 0;
+    
+    
+ 
+      const pdfModal = document.getElementById('pdfModal');
+      const pdfFrame = document.getElementById('pdfFrame');
+      
+      document.querySelectorAll('.open-pdf').forEach(btn=>{
+        btn.addEventListener('click',()=>{
+          pdfFrame.src = btn.dataset.pdf;
+          pdfModal.classList.add('active');
+        });
+      });
+      
+      document.querySelector('.pdf-close').onclick = ()=>{
+        pdfModal.classList.remove('active');
+        pdfFrame.src = '';
+      };
+      
+      pdfModal.addEventListener('click',e=>{
+        if(e.target === pdfModal){
+          pdfModal.classList.remove('active');
+          pdfFrame.src = '';
+        }
+      });
+
+
+        const searchInput = document.getElementById('qosidahSearch');
+        const qosidahItems = document.querySelectorAll('#sholawat .sholawat-item');
+      
+        searchInput.addEventListener('keyup', () => {
+          const keyword = searchInput.value.toLowerCase();
+      
+          qosidahItems.forEach(item => {
+            const title = item.querySelector('h3').textContent.toLowerCase();
+            item.style.display = title.includes(keyword) ? 'flex' : 'none';
+          });
+        });
+    
+      
+          document.getElementById('shareWhatsApp').addEventListener('click', function () {
+            const text = `
+         *JADWAL MAJELIS SHOFWATURRAHMAN*
+        Assalamu’alaikum,
+        Berikut informasi jadwal pengajian Majelis Shofwaturrahman.
+        - Lokasi:
+        https://www.google.com/maps?q=Majelis%20Shofwaturrahman
+        
+        - Detail lengkap:
+        https://majelisshofwaturrahman.github.io/majelis/
+        
+        Semoga bermanfaat dan berkah 🤲
+            `;
+        
+            const url = "https://wa.me/?text=" + encodeURIComponent(text);
+            window.open(url, '_blank');
+          });
+      
+
 </script>
 
 </html>
