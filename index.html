@@ -492,6 +492,62 @@ footer{
     font-size:.9rem;
   }
 }
+
+/* SOCIAL MEDIA MODERN */
+.modern-social{
+  display:flex;
+  justify-content:center;
+  gap:1rem;
+  margin-top:1rem;
+  flex-wrap:wrap;
+}
+
+.modern-social a{
+  display:flex;
+  align-items:center;
+  gap:.55rem;
+  padding:.65rem 1.2rem;
+  border-radius:999px;
+  background:rgba(255,255,255,.75);
+  backdrop-filter:blur(10px);
+  box-shadow:0 8px 24px rgba(0,0,0,.08);
+  color:var(--text);
+  font-weight:600;
+  font-size:.9rem;
+  text-decoration:none;
+  transition:all .35s ease;
+}
+
+.modern-social i{
+  font-size:1.3rem;
+}
+
+/* Hover efek */
+.modern-social a:hover{
+  transform:translateY(-4px) scale(1.03);
+  color:#fff;
+}
+
+/* Warna brand */
+.modern-social a:hover .bxl-youtube{color:#ff0000}
+.modern-social a:hover .bxl-instagram{color:#e1306c}
+.modern-social a:hover .bxl-tiktok{color:#000}
+
+/* Background gradasi saat hover */
+.modern-social a:hover{
+  background:linear-gradient(135deg,#2563eb,#1e40af);
+}
+
+/* Mobile */
+@media(max-width:480px){
+  .modern-social a span{
+    display:none; /* icon only di HP */
+  }
+
+  .modern-social a{
+    padding:.7rem;
+  }
+}
 </style>
 <link rel="canonical" href="https://majelisshofwaturrahman.github.io/majelis/">
 
@@ -702,10 +758,19 @@ footer{
 
 <footer>
   <p>© 2025 Majelis Shofwaturrahman</p>
-  <div class="social">
-    <a href="https://www.youtube.com/@SHOFWATURRAHMAN_OFFICIAL" target="_blank" el="noopener noreferrer"><i class='bx bxl-youtube'></i></a>
-    <a href="https://www.instagram.com/shofwaturrahman_official" target="_blank" el="noopener noreferrer"><i class='bx bxl-instagram'></i></a>
-    <a href="https://www.tiktok.com/@shofwaturrahman.official" target="_blank" el="noopener noreferrer"><i class='bx bxl-tiktok'></i></a>
+  <div class="social modern-social">
+    <a href="https://www.youtube.com/@SHOFWATURRAHMAN_OFFICIAL" target="_blank" aria-label="YouTube">
+      <i class='bx bxl-youtube'></i>
+      <span>YouTube</span>
+    </a>
+    <a href="https://www.instagram.com/shofwaturrahman_official" target="_blank" aria-label="Instagram">
+      <i class='bx bxl-instagram'></i>
+      <span>Instagram</span>
+    </a>
+    <a href="https://www.tiktok.com/@shofwaturrahman.official" target="_blank" aria-label="TikTok">
+      <i class='bx bxl-tiktok'></i>
+      <span>TikTok</span>
+    </a>
   </div>
 </footer>
 
