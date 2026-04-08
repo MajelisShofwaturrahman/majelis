@@ -823,6 +823,36 @@ body{
 #donasi{
   margin-bottom:1rem; /* biar tidak jauh dari footer */
 }
+
+  #musik iframe{
+  width:100%;
+  height:152px;
+  border:none;
+  border-radius:12px;
+  margin-top:.5rem;
+}
+
+/* tablet */
+@media(max-width:768px){
+  #musik iframe{
+    height:140px;
+  }
+}
+
+/* hp kecil */
+@media(max-width:480px){
+  #musik iframe{
+    height:130px;
+  }
+}
+
+#musik .card{
+  transition:.3s;
+}
+
+#musik .card:hover{
+  transform:translateY(-5px);
+}
 </style>
 <link rel="canonical" href="https://majelisshofwaturrahman.github.io/majelis/">
 
@@ -906,7 +936,37 @@ body{
     <div class="card"><img src="aset7.jpg" loading="lazy" alt="Dokumentasi kegiatan pengajian Majelis Shofwaturrahman"></div>
   </div>
 </section>
+<section id="musik" class="container animate-on-scroll">
+  <h2>Spotify Shofwaturrahman</h2>
 
+  <div class="card">
+    <h3>Playlist Sholawat</h3>
+    <iframe 
+      src="https://open.spotify.com/embed/track/3fAshbGpdSNuxLBVXJG15V?si=60aef50dac044448" 
+      loading="lazy"
+      allow="autoplay; clipboard-write; encrypted-media"
+    ></iframe>
+
+    <iframe 
+    src="https://open.spotify.com/embed/track/2skj0446wu8kM9YvN03BOk?si=a2b2a49caba94b9c" 
+    loading="lazy"
+    allow="autoplay; clipboard-write; encrypted-media"
+  ></iframe>
+
+  <iframe 
+  src="https://open.spotify.com/embed/album/4AG3LwhyAriQ3TLm0TBSSX?si=ewLrVk5LQMaJQHakuhEYbQ" 
+  loading="lazy"
+  allow="autoplay; clipboard-write; encrypted-media"
+></iframe>
+
+<iframe 
+src="https://open.spotify.com/embed/track/200o5Y1q65bXuAHIgtyAUK?si=f7b4ef475f324fd7" 
+loading="lazy"
+allow="autoplay; clipboard-write; encrypted-media"
+></iframe>
+  </div>
+</section>
+  
 <section id="sholawat" class="container animate-on-scroll">
   <h2>Kumpulan Qosidah</h2>
   <div class="qosidah-search">
