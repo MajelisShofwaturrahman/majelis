@@ -1191,8 +1191,7 @@ allow="autoplay; clipboard-write; encrypted-media"
       
       document.querySelectorAll('.open-pdf').forEach(btn=>{
         btn.addEventListener('click',()=>{
-          pdfFrame.src = btn.dataset.pdf;
-          pdfModal.classList.add('active');
+        window.open(btn.dataset.pdf, '_blank');
         });
       });
       
