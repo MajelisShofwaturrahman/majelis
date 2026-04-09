@@ -853,6 +853,52 @@ body{
 #musik .card:hover{
   transform:translateY(-5px);
 }
+
+  .pdf-viewer{
+  width:100%;
+  height:100%;
+  overflow:auto;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  background:#111;
+}
+
+#pdfCanvas{
+  width:100%;
+  max-width:800px;
+  margin:auto;
+}
+
+  .pdf-controls{
+  display:flex;
+  justify-content:space-between;
+  padding:.5rem 1rem;
+  background:#111;
+}
+
+.pdf-controls button{
+  background:#fff;
+  border:none;
+  padding:.5rem 1rem;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:1rem;
+}
+  #prevPage, #nextPage{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:#fff;
+  border:none;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  cursor:pointer;
+}
+
+#prevPage{ left:10px; }
+#nextPage{ right:10px; }
 </style>
 <link rel="canonical" href="https://majelisshofwaturrahman.github.io/majelis/">
 
@@ -1084,7 +1130,15 @@ allow="autoplay; clipboard-write; encrypted-media"
 <div class="pdf-modal" id="pdfModal">
   <div class="pdf-box">
     <button class="pdf-close">&times;</button>
-    <iframe id="pdfFrame" src=""></iframe>
+
+        <div class="pdf-controls">
+      <button id="prevPage">⬅</button>
+      <button id="nextPage">➡</button>
+    </div>
+
+   <div class="pdf-viewer">
+  <canvas id="pdfCanvas"></canvas>
+</div>
   </div>
 </div>
 
@@ -1186,27 +1240,60 @@ allow="autoplay; clipboard-write; encrypted-media"
     
     
  
-      const pdfModal = document.getElementById('pdfModal');
-      const pdfFrame = document.getElementById('pdfFrame');
-      
-      document.querySelectorAll('.open-pdf').forEach(btn=>{
-        btn.addEventListener('click',()=>{
-        window.open(btn.dataset.pdf, '_blank');
-        });
-      });
-      
-      document.querySelector('.pdf-close').onclick = ()=>{
-        pdfModal.classList.remove('active');
-        pdfFrame.src = '';
-      };
-      
-      pdfModal.addEventListener('click',e=>{
-        if(e.target === pdfModal){
-          pdfModal.classList.remove('active');
-          pdfFrame.src = '';
-        }
-      });
+     const pdfModal = document.getElementById('pdfModal');
+const canvas = document.getElementById('pdfCanvas');
+const ctx = canvas.getContext('2d');
 
+let pdfDoc = null;
+let currentPage = 1;
+
+function renderPage(num){
+  pdfDoc.getPage(num).then(page=>{
+    const viewport = page.getViewport({ scale: 1.5 });
+
+    canvas.height = viewport.height;
+    canvas.width = viewport.width;
+
+    const renderContext = {
+      canvasContext: ctx,
+      viewport: viewport
+    };
+
+    page.render(renderContext);
+  });
+}
+
+function loadPDF(url){
+  pdfjsLib.getDocument(url).promise.then(pdf=>{
+    pdfDoc = pdf;
+    currentPage = 1;
+    renderPage(currentPage);
+  });
+}
+
+/* tombol buka */
+document.querySelectorAll('.open-pdf').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    loadPDF(btn.dataset.pdf);
+    pdfModal.classList.add('active');
+  });
+});
+
+/* close */
+document.querySelector('.pdf-close').onclick = ()=>{
+  pdfModal.classList.remove('active');
+};
+document.getElementById('prevPage').onclick = ()=>{
+  if(currentPage <= 1) return;
+  currentPage--;
+  renderPage(currentPage);
+};
+
+document.getElementById('nextPage').onclick = ()=>{
+  if(currentPage >= pdfDoc.numPages) return;
+  currentPage++;
+  renderPage(currentPage);
+};
 
         const searchInput = document.getElementById('qosidahSearch');
         const qosidahItems = document.querySelectorAll('#sholawat .sholawat-item');
