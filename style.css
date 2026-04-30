@@ -204,7 +204,7 @@
     }
 
     /* ============================================================
-       QASIDAH SECTION — SCROLL BASED, NO BUTTONS
+       QASIDAH SECTION — tap row to open PDF in new window
     ============================================================ */
     .qosidah-search {
       display: flex;
@@ -229,7 +229,7 @@
     }
     .qosidah-search input::placeholder { color: var(--muted); }
 
-    /* Qasidah list items — tap to open inline PDF viewer */
+    /* List */
     .sholawat-list {
       display: flex;
       flex-direction: column;
@@ -239,18 +239,21 @@
       background: #fff;
       border-radius: 14px;
       box-shadow: 0 4px 14px rgba(0,0,0,.06);
-      overflow: hidden;
-      transition: box-shadow .3s;
+      cursor: pointer;
+      transition: box-shadow .3s, transform .2s;
     }
-    .sholawat-item:hover { box-shadow: 0 8px 24px rgba(37,99,235,.15); }
+    .sholawat-item:hover {
+      box-shadow: 0 8px 24px rgba(37,99,235,.18);
+      transform: translateY(-2px);
+    }
+    .sholawat-item:active { transform: scale(.98); }
 
-    /* Tap-able header row */
+    /* Row */
     .sholawat-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: .9rem 1.1rem;
-      cursor: pointer;
+      padding: 1rem 1.2rem;
       user-select: none;
     }
     .sholawat-header h3 {
@@ -258,72 +261,13 @@
       font-weight: 600;
       margin: 0;
     }
-    .sholawat-header .chevron {
+    .sholawat-header .open-icon {
       font-size: 1.3rem;
       color: var(--primary);
-      transition: transform .35s ease;
       flex-shrink: 0;
     }
-    .sholawat-item.open .sholawat-header .chevron {
-      transform: rotate(180deg);
-    }
 
-    /* Inline PDF viewer panel */
-    .sholawat-panel {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height .45s ease;
-    }
-    .sholawat-item.open .sholawat-panel {
-      max-height: 90vh; /* large enough for content */
-    }
-    .pdf-inline-wrap {
-      padding: 0 .75rem .75rem;
-    }
-
-    /* Page controls bar */
-    .pdf-inline-controls {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: .75rem;
-      padding: .5rem 0 .6rem;
-    }
-    .pdf-inline-controls button {
-      background: var(--primary);
-      color: #fff;
-      border: none;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      font-size: 1rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background .2s, transform .15s;
-    }
-    .pdf-inline-controls button:hover { background: var(--primary-dk); transform: scale(1.08); }
-    .pdf-inline-controls button:disabled { background: #cbd5e1; cursor: default; transform: none; }
-    .pdf-page-info { font-size: .85rem; color: var(--muted); min-width: 70px; text-align: center; }
-
-    /* Scrollable canvas container */
-    .pdf-canvas-scroll {
-      width: 100%;
-      max-height: 70vh;
-      overflow-y: auto;
-      overflow-x: auto;
-      border-radius: 10px;
-      background: #1e1e2e;
-      -webkit-overflow-scrolling: touch;
-    }
-    .pdf-canvas-scroll canvas {
-      display: block;
-      margin: auto;
-      max-width: 100%;
-    }
-
-    /* ============================================================
+/* ============================================================
        JADWAL / PAMFLET
     ============================================================ */
     .pamflet-img {
