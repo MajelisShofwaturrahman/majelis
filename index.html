@@ -21,7 +21,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 
   <script type="application/ld+json">
   {
@@ -50,445 +49,7 @@
     ]
   }
   </script>
-
-  <style>
-    /* ============================================================
-       CSS VARIABLES & RESET
-    ============================================================ */
-    :root {
-      --primary:    #2563eb;
-      --primary-dk: #1e40af;
-      --secondary:  #0f172a;
-      --bg:         #f8fafc;
-      --card:       #ffffff;
-      --text:       #0f172a;
-      --muted:      #64748b;
-      --radius:     16px;
-      --shadow:     0 10px 30px rgba(0,0,0,.08);
-      --container:  1200px;
-      --pad:        clamp(.8rem, 3vw, 1.5rem);
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { overflow-x: hidden; }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      -webkit-tap-highlight-color: transparent;
-      transition: background .4s, color .4s;
-    }
-    img, video { max-width: 100%; height: auto; display: block; }
-
-    /* ============================================================
-       LAYOUT UTILITIES
-    ============================================================ */
-    .container {
-      max-width: var(--container);
-      margin: 2rem auto;
-      padding: 0 var(--pad);
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: clamp(1rem, 2vw, 1.5rem);
-    }
-
-    /* ============================================================
-       HEADER & NAV
-    ============================================================ */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(255,255,255,.92);
-      backdrop-filter: blur(12px);
-      box-shadow: var(--shadow);
-    }
-    nav {
-      max-width: var(--container);
-      margin: auto;
-      padding: .8rem var(--pad);
-      display: flex;
-      align-items: center;
-      gap: .5rem;
-    }
-    .logo-wrap {
-      display: flex;
-      align-items: center;
-      gap: .6rem;
-      flex: 1;
-      min-width: 0;
-    }
-    .logo-img {
-      width: clamp(38px, 6vw, 52px);
-      height: auto;
-      object-fit: contain;
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,.15));
-      flex-shrink: 0;
-    }
-    .logo-text {
-      font-weight: 700;
-      font-size: clamp(.85rem, 3vw, 1.25rem);
-      color: var(--primary);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: .6rem;
-      flex-shrink: 0;
-    }
-    .menu {
-      display: flex;
-      gap: .6rem;
-      margin-left: auto;
-    }
-    .menu a {
-      padding: .55rem 1.1rem;
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: 600;
-      color: var(--text);
-      font-size: .9rem;
-      transition: background .3s, color .3s;
-      white-space: nowrap;
-    }
-    .menu a:hover { background: var(--primary); color: #fff; }
-
-    /* Hamburger */
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 5px;
-      background: #fff;
-      border: none;
-      padding: 10px;
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      cursor: pointer;
-      box-shadow: var(--shadow);
-    }
-    .menu-toggle span {
-      width: 22px;
-      height: 3px;
-      background: var(--secondary);
-      border-radius: 5px;
-      transition: .3s;
-    }
-
-    @media (max-width: 1024px) {
-      .menu-toggle { display: flex; }
-      .menu {
-        position: absolute;
-        top: 68px;
-        right: 0;
-        width: 100%;
-        background: #fff;
-        flex-direction: column;
-        padding: 1rem var(--pad);
-        border-radius: 0 0 var(--radius) var(--radius);
-        box-shadow: var(--shadow);
-        display: none;
-        animation: fadeDown .3s ease;
-      }
-      .menu.active { display: flex; }
-      .menu a { width: 100%; padding: .9rem 1rem; border-radius: 12px; }
-    }
-
-    @keyframes fadeDown {
-      from { opacity: 0; transform: translateY(-10px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ============================================================
-       HERO
-    ============================================================ */
-    .slider video {
-      width: 100%;
-      height: clamp(200px, 55vh, 650px);
-      object-fit: cover;
-      border-radius: var(--radius);
-    }
-    .hero {
-      max-width: 1500px;
-      margin: 2rem auto;
-      padding: clamp(2rem, 5vw, 4rem) 1rem;
-      border-radius: var(--radius);
-      background: linear-gradient(135deg, #2563eb, #1e3a8a);
-      color: #fff;
-      text-align: center;
-    }
-    .hero h1 {
-      font-size: clamp(1.6rem, 5vw, 2.5rem);
-      line-height: 1.2;
-      margin-bottom: .5rem;
-    }
-    .hero p { opacity: .9; font-size: clamp(.9rem, 3.5vw, 1.1rem); }
-
-    /* ============================================================
-       CARDS
-    ============================================================ */
-    .card {
-      background: var(--card);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 1.5rem;
-      text-align: center;
-      transition: transform .3s;
-    }
-    .card:hover { transform: translateY(-6px); }
-    .card img, .card video { width: 100%; border-radius: var(--radius); }
-    .card img { object-fit: contain; }
-
-    /* ============================================================
-       SPOTIFY
-    ============================================================ */
-    #musik iframe {
-      width: 100%;
-      height: 152px;
-      border: none;
-      border-radius: 12px;
-      margin-top: .5rem;
-    }
-
-    /* ============================================================
-       QASIDAH SECTION — SCROLL BASED, NO BUTTONS
-    ============================================================ */
-    .qosidah-search {
-      display: flex;
-      align-items: center;
-      gap: .6rem;
-      background: #fff;
-      padding: .7rem 1rem;
-      border-radius: 999px;
-      box-shadow: 0 4px 14px rgba(0,0,0,.08);
-      max-width: 420px;
-      margin: 1rem 0 1.5rem;
-    }
-    .qosidah-search i { font-size: 1.2rem; color: var(--muted); }
-    .qosidah-search input {
-      border: none;
-      outline: none;
-      width: 100%;
-      font-family: 'Poppins', sans-serif;
-      font-size: .9rem;
-      color: var(--text);
-      background: transparent;
-    }
-    .qosidah-search input::placeholder { color: var(--muted); }
-
-    /* Qasidah list items — tap to open inline PDF viewer */
-    .sholawat-list {
-      display: flex;
-      flex-direction: column;
-      gap: .75rem;
-    }
-    .sholawat-item {
-      background: #fff;
-      border-radius: 14px;
-      box-shadow: 0 4px 14px rgba(0,0,0,.06);
-      overflow: hidden;
-      transition: box-shadow .3s;
-    }
-    .sholawat-item:hover { box-shadow: 0 8px 24px rgba(37,99,235,.15); }
-
-    /* Tap-able header row */
-    .sholawat-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: .9rem 1.1rem;
-      cursor: pointer;
-      user-select: none;
-    }
-    .sholawat-header h3 {
-      font-size: .95rem;
-      font-weight: 600;
-      margin: 0;
-    }
-    .sholawat-header .chevron {
-      font-size: 1.3rem;
-      color: var(--primary);
-      transition: transform .35s ease;
-      flex-shrink: 0;
-    }
-    .sholawat-item.open .sholawat-header .chevron {
-      transform: rotate(180deg);
-    }
-
-    /* Inline PDF viewer panel */
-    .sholawat-panel {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height .45s ease;
-    }
-    .sholawat-item.open .sholawat-panel {
-      max-height: 90vh; /* large enough for content */
-    }
-    .pdf-inline-wrap {
-      padding: 0 .75rem .75rem;
-    }
-
-    /* Page controls bar */
-    .pdf-inline-controls {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: .75rem;
-      padding: .5rem 0 .6rem;
-    }
-    .pdf-inline-controls button {
-      background: var(--primary);
-      color: #fff;
-      border: none;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      font-size: 1rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background .2s, transform .15s;
-    }
-    .pdf-inline-controls button:hover { background: var(--primary-dk); transform: scale(1.08); }
-    .pdf-inline-controls button:disabled { background: #cbd5e1; cursor: default; transform: none; }
-    .pdf-page-info { font-size: .85rem; color: var(--muted); min-width: 70px; text-align: center; }
-
-    /* Scrollable canvas container */
-    .pdf-canvas-scroll {
-      width: 100%;
-      max-height: 70vh;
-      overflow-y: auto;
-      overflow-x: auto;
-      border-radius: 10px;
-      background: #1e1e2e;
-      -webkit-overflow-scrolling: touch;
-    }
-    .pdf-canvas-scroll canvas {
-      display: block;
-      margin: auto;
-      max-width: 100%;
-    }
-
-    /* ============================================================
-       JADWAL / PAMFLET
-    ============================================================ */
-    .pamflet-img {
-      width: 100%;
-      max-width: 600px;
-      margin: auto;
-      display: block;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      transition: transform .3s;
-    }
-    .pamflet-img:hover { transform: scale(1.02); }
-
-    /* ============================================================
-       MAP
-    ============================================================ */
-    .map-wrapper {
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-    }
-    .map-wrapper iframe {
-      width: 100%;
-      height: clamp(220px, 40vw, 400px);
-      border: 0;
-    }
-
-    /* ============================================================
-       BUTTONS
-    ============================================================ */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: .4rem;
-      margin-top: 1rem;
-      padding: .75rem 1.4rem;
-      border-radius: 999px;
-      background: var(--primary);
-      color: #fff;
-      font-weight: 600;
-      text-decoration: none;
-      font-family: 'Poppins', sans-serif;
-      font-size: .9rem;
-      cursor: pointer;
-      border: none;
-      transition: background .3s, transform .2s;
-    }
-    .btn:hover { background: var(--primary-dk); transform: translateY(-2px); }
-    @media (max-width: 480px) { .btn { width: 100%; justify-content: center; } }
-
-    /* ============================================================
-       FOOTER & SOCIAL
-    ============================================================ */
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      margin-top: 2rem;
-      color: var(--muted);
-    }
-    .modern-social {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 1rem;
-      flex-wrap: wrap;
-    }
-    .modern-social a {
-      display: flex;
-      align-items: center;
-      gap: .55rem;
-      padding: .65rem 1.2rem;
-      border-radius: 999px;
-      background: rgba(255,255,255,.75);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 8px 24px rgba(0,0,0,.08);
-      color: var(--text);
-      font-weight: 600;
-      font-size: .9rem;
-      text-decoration: none;
-      transition: all .3s;
-    }
-    .modern-social i { font-size: 1.3rem; }
-    .modern-social a:hover {
-      transform: translateY(-4px) scale(1.03);
-      background: linear-gradient(135deg, #2563eb, #1e40af);
-      color: #fff;
-    }
-    @media (max-width: 480px) {
-      .modern-social a span { display: none; }
-      .modern-social a { padding: .7rem; }
-    }
-
-    /* ============================================================
-       SCROLL ANIMATIONS
-    ============================================================ */
-    .animate-on-scroll {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity .8s ease, transform .8s ease;
-    }
-    .animate-on-scroll.show { opacity: 1; transform: translateY(0); }
-
-    /* ============================================================
-       SECTION HEADINGS
-    ============================================================ */
-    .container h2 {
-      font-size: clamp(1.3rem, 4vw, 1.8rem);
-      margin-bottom: 1.2rem;
-      color: var(--secondary);
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -561,7 +122,7 @@
 </section>
 
 <!-- ============================================================
-     SHOLAWAT / QASIDAH — tap to expand inline PDF viewer
+     SHOLAWAT / QASIDAH — tap row to open PDF in new window
 ============================================================ -->
 <section id="sholawat" class="container animate-on-scroll">
   <h2>Kumpulan Qosidah</h2>
@@ -572,215 +133,78 @@
   </div>
 
   <div class="sholawat-list" id="qosidahList">
-
-    <!-- Template: each item has a header (tap to toggle) + panel (inline PDF) -->
-
     <div class="sholawat-item" data-pdf="qosidah burdah.pdf">
       <div class="sholawat-header">
         <h3>Qosidah Burdah</h3>
-        <i class='bx bx-chevron-down chevron'></i>
-      </div>
-      <div class="sholawat-panel">
-        <div class="pdf-inline-wrap">
-          <div class="pdf-inline-controls">
-            <button class="pdf-prev" aria-label="Sebelumnya"><i class='bx bx-chevron-left'></i></button>
-            <span class="pdf-page-info">— / —</span>
-            <button class="pdf-next" aria-label="Selanjutnya"><i class='bx bx-chevron-right'></i></button>
-          </div>
-          <div class="pdf-canvas-scroll">
-            <canvas></canvas>
-          </div>
-        </div>
+        <i class='bx bx-file-blank open-icon'></i>
       </div>
     </div>
-
     <div class="sholawat-item" data-pdf="simtuduror.pdf">
       <div class="sholawat-header">
         <h3>Maulid Simtudduror</h3>
-        <i class='bx bx-chevron-down chevron'></i>
-      </div>
-      <div class="sholawat-panel">
-        <div class="pdf-inline-wrap">
-          <div class="pdf-inline-controls">
-            <button class="pdf-prev" aria-label="Sebelumnya"><i class='bx bx-chevron-left'></i></button>
-            <span class="pdf-page-info">— / —</span>
-            <button class="pdf-next" aria-label="Selanjutnya"><i class='bx bx-chevron-right'></i></button>
-          </div>
-          <div class="pdf-canvas-scroll"><canvas></canvas></div>
-        </div>
+        <i class='bx bx-file-blank open-icon'></i>
       </div>
     </div>
-
     <div class="sholawat-item" data-pdf="Shollu ala Nuriladzi.pdf">
       <div class="sholawat-header">
         <h3>Shollu ala Nuriladzi</h3>
-        <i class='bx bx-chevron-down chevron'></i>
-      </div>
-      <div class="sholawat-panel">
-        <div class="pdf-inline-wrap">
-          <div class="pdf-inline-controls">
-            <button class="pdf-prev" aria-label="Sebelumnya"><i class='bx bx-chevron-left'></i></button>
-            <span class="pdf-page-info">— / —</span>
-            <button class="pdf-next" aria-label="Selanjutnya"><i class='bx bx-chevron-right'></i></button>
-          </div>
-          <div class="pdf-canvas-scroll"><canvas></canvas></div>
-        </div>
+        <i class='bx bx-file-blank open-icon'></i>
       </div>
     </div>
-
     <div class="sholawat-item" data-pdf="Birosulillah.pdf">
       <div class="sholawat-header">
         <h3>Birosulillah</h3>
-        <i class='bx bx-chevron-down chevron'></i>
-      </div>
-      <div class="sholawat-panel">
-        <div class="pdf-inline-wrap">
-          <div class="pdf-inline-controls">
-            <button class="pdf-prev" aria-label="Sebelumnya"><i class='bx bx-chevron-left'></i></button>
-            <span class="pdf-page-info">— / —</span>
-            <button class="pdf-next" aria-label="Selanjutnya"><i class='bx bx-chevron-right'></i></button>
-          </div>
-          <div class="pdf-canvas-scroll"><canvas></canvas></div>
-        </div>
+        <i class='bx bx-file-blank open-icon'></i>
       </div>
     </div>
-
     <div class="sholawat-item" data-pdf="Ya Sayyidi ya rasulallah.pdf">
       <div class="sholawat-header">
         <h3>Ya Sayyidi Ya Rasulallah</h3>
-        <i class='bx bx-chevron-down chevron'></i>
-      </div>
-      <div class="sholawat-panel">
-        <div class="pdf-inline-wrap">
-          <div class="pdf-inline-controls">
-            <button class="pdf-prev" aria-label="Sebelumnya"><i class='bx bx-chevron-left'></i></button>
-            <span class="pdf-page-info">— / —</span>
-            <button class="pdf-next" aria-label="Selanjutnya"><i class='bx bx-chevron-right'></i></button>
-          </div>
-          <div class="pdf-canvas-scroll"><canvas></canvas></div>
-        </div>
+        <i class='bx bx-file-blank open-icon'></i>
       </div>
     </div>
-
     <div class="sholawat-item" data-pdf="Mabrokal Yaum.pdf">
       <div class="sholawat-header">
         <h3>Mabrokal Yaum</h3>
-        <i class='bx bx-chevron-down chevron'></i>
-      </div>
-      <div class="sholawat-panel">
-        <div class="pdf-inline-wrap">
-          <div class="pdf-inline-controls">
-            <button class="pdf-prev" aria-label="Sebelumnya"><i class='bx bx-chevron-left'></i></button>
-            <span class="pdf-page-info">— / —</span>
-            <button class="pdf-next" aria-label="Selanjutnya"><i class='bx bx-chevron-right'></i></button>
-          </div>
-          <div class="pdf-canvas-scroll"><canvas></canvas></div>
-        </div>
+        <i class='bx bx-file-blank open-icon'></i>
       </div>
     </div>
-
     <div class="sholawat-item" data-pdf="Khuzbiyadi.pdf">
       <div class="sholawat-header">
         <h3>Ya Sayyidi Ya Rasulallah Khuz Biyadi</h3>
-        <i class='bx bx-chevron-down chevron'></i>
-      </div>
-      <div class="sholawat-panel">
-        <div class="pdf-inline-wrap">
-          <div class="pdf-inline-controls">
-            <button class="pdf-prev" aria-label="Sebelumnya"><i class='bx bx-chevron-left'></i></button>
-            <span class="pdf-page-info">— / —</span>
-            <button class="pdf-next" aria-label="Selanjutnya"><i class='bx bx-chevron-right'></i></button>
-          </div>
-          <div class="pdf-canvas-scroll"><canvas></canvas></div>
-        </div>
+        <i class='bx bx-file-blank open-icon'></i>
       </div>
     </div>
-
     <div class="sholawat-item" data-pdf="qul.pdf">
       <div class="sholawat-header">
         <h3>Qul Ya Adzim</h3>
-        <i class='bx bx-chevron-down chevron'></i>
-      </div>
-      <div class="sholawat-panel">
-        <div class="pdf-inline-wrap">
-          <div class="pdf-inline-controls">
-            <button class="pdf-prev" aria-label="Sebelumnya"><i class='bx bx-chevron-left'></i></button>
-            <span class="pdf-page-info">— / —</span>
-            <button class="pdf-next" aria-label="Selanjutnya"><i class='bx bx-chevron-right'></i></button>
-          </div>
-          <div class="pdf-canvas-scroll"><canvas></canvas></div>
-        </div>
+        <i class='bx bx-file-blank open-icon'></i>
       </div>
     </div>
-
     <div class="sholawat-item" data-pdf="Nurul Musthofa.pdf">
       <div class="sholawat-header">
         <h3>Nurul Musthofa</h3>
-        <i class='bx bx-chevron-down chevron'></i>
-      </div>
-      <div class="sholawat-panel">
-        <div class="pdf-inline-wrap">
-          <div class="pdf-inline-controls">
-            <button class="pdf-prev" aria-label="Sebelumnya"><i class='bx bx-chevron-left'></i></button>
-            <span class="pdf-page-info">— / —</span>
-            <button class="pdf-next" aria-label="Selanjutnya"><i class='bx bx-chevron-right'></i></button>
-          </div>
-          <div class="pdf-canvas-scroll"><canvas></canvas></div>
-        </div>
+        <i class='bx bx-file-blank open-icon'></i>
       </div>
     </div>
-
     <div class="sholawat-item" data-pdf="Ya laqolbin.pdf">
       <div class="sholawat-header">
         <h3>Ya Laqolbin</h3>
-        <i class='bx bx-chevron-down chevron'></i>
-      </div>
-      <div class="sholawat-panel">
-        <div class="pdf-inline-wrap">
-          <div class="pdf-inline-controls">
-            <button class="pdf-prev" aria-label="Sebelumnya"><i class='bx bx-chevron-left'></i></button>
-            <span class="pdf-page-info">— / —</span>
-            <button class="pdf-next" aria-label="Selanjutnya"><i class='bx bx-chevron-right'></i></button>
-          </div>
-          <div class="pdf-canvas-scroll"><canvas></canvas></div>
-        </div>
+        <i class='bx bx-file-blank open-icon'></i>
       </div>
     </div>
-
     <div class="sholawat-item" data-pdf="taghsya.pdf">
       <div class="sholawat-header">
         <h3>Sholawatullahi Taghsya</h3>
-        <i class='bx bx-chevron-down chevron'></i>
-      </div>
-      <div class="sholawat-panel">
-        <div class="pdf-inline-wrap">
-          <div class="pdf-inline-controls">
-            <button class="pdf-prev" aria-label="Sebelumnya"><i class='bx bx-chevron-left'></i></button>
-            <span class="pdf-page-info">— / —</span>
-            <button class="pdf-next" aria-label="Selanjutnya"><i class='bx bx-chevron-right'></i></button>
-          </div>
-          <div class="pdf-canvas-scroll"><canvas></canvas></div>
-        </div>
+        <i class='bx bx-file-blank open-icon'></i>
       </div>
     </div>
-
     <div class="sholawat-item" data-pdf="s1.pdf">
       <div class="sholawat-header">
         <h3>Sholatullahi Malahat Kawakib</h3>
-        <i class='bx bx-chevron-down chevron'></i>
-      </div>
-      <div class="sholawat-panel">
-        <div class="pdf-inline-wrap">
-          <div class="pdf-inline-controls">
-            <button class="pdf-prev" aria-label="Sebelumnya"><i class='bx bx-chevron-left'></i></button>
-            <span class="pdf-page-info">— / —</span>
-            <button class="pdf-next" aria-label="Selanjutnya"><i class='bx bx-chevron-right'></i></button>
-          </div>
-          <div class="pdf-canvas-scroll"><canvas></canvas></div>
-        </div>
+        <i class='bx bx-file-blank open-icon'></i>
       </div>
     </div>
-
   </div><!-- /.sholawat-list -->
 </section>
 
@@ -846,140 +270,7 @@
 <!-- ============================================================
      JAVASCRIPT
 ============================================================ -->
-<script>
-(function () {
-  'use strict';
 
-  /* ── Hamburger menu ── */
-  const toggle = document.querySelector('.menu-toggle');
-  const menu   = document.querySelector('.menu');
-  toggle.addEventListener('click', () => menu.classList.toggle('active'));
-  // Close menu when a link is tapped
-  menu.querySelectorAll('a').forEach(a =>
-    a.addEventListener('click', () => menu.classList.remove('active'))
-  );
-
-  /* ── Scroll-reveal animation ── */
-  const observer = new IntersectionObserver(
-    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); }),
-    { threshold: 0.12 }
-  );
-  document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
-
-  /* ── WhatsApp share ── */
-  document.getElementById('shareWhatsApp').addEventListener('click', () => {
-    const text =
-      `*JADWAL MAJELIS SHOFWATURRAHMAN*\n` +
-      `Assalamu'alaikum,\n` +
-      `Berikut informasi jadwal pengajian Majelis Shofwaturrahman.\n\n` +
-      `- Lokasi:\nhttps://www.google.com/maps?q=Majelis%20Shofwaturrahman\n\n` +
-      `- Detail lengkap:\nhttps://majelisshofwaturrahman.github.io/majelis/\n\n` +
-      `Semoga bermanfaat dan berkah 🤲`;
-    window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank');
-  });
-
-  /* ── Qasidah search filter ── */
-  document.getElementById('qosidahSearch').addEventListener('input', function () {
-    const kw = this.value.toLowerCase();
-    document.querySelectorAll('#qosidahList .sholawat-item').forEach(item => {
-      const title = item.querySelector('h3').textContent.toLowerCase();
-      item.style.display = title.includes(kw) ? '' : 'none';
-    });
-  });
-
-  /* ── Inline PDF viewer (accordion) ── */
-  // Per-item state stored in a WeakMap
-  const pdfState = new WeakMap();
-
-  // Render a specific page onto the item's canvas
-  function renderPage(item, pageNum) {
-    const state  = pdfState.get(item);
-    const canvas = item.querySelector('canvas');
-    const ctx    = canvas.getContext('2d');
-    const info   = item.querySelector('.pdf-page-info');
-    const btnPrev = item.querySelector('.pdf-prev');
-    const btnNext = item.querySelector('.pdf-next');
-
-    state.pdf.getPage(pageNum).then(page => {
-      // Scale to fill the container width nicely
-      const container = canvas.closest('.pdf-canvas-scroll');
-      const targetW   = Math.min(container.clientWidth || 320, 800);
-      const viewport  = page.getViewport({ scale: 1 });
-      const scale     = targetW / viewport.width;
-      const scaled    = page.getViewport({ scale });
-
-      canvas.width  = scaled.width;
-      canvas.height = scaled.height;
-      canvas.style.width  = '100%';
-      canvas.style.height = 'auto';
-
-      page.render({ canvasContext: ctx, viewport: scaled });
-
-      state.current  = pageNum;
-      info.textContent = `${pageNum} / ${state.pdf.numPages}`;
-      btnPrev.disabled = pageNum <= 1;
-      btnNext.disabled = pageNum >= state.pdf.numPages;
-    });
-  }
-
-  // Load PDF for an item (lazy — only on first open)
-  function loadPDFForItem(item) {
-    const state = pdfState.get(item);
-    if (state.loaded) { return; }
-    state.loaded = true;
-
-    const url = item.dataset.pdf;
-    pdfjsLib.getDocument(url).promise.then(pdf => {
-      state.pdf = pdf;
-      renderPage(item, 1);
-    }).catch(() => {
-      item.querySelector('.pdf-page-info').textContent = 'Gagal memuat PDF';
-    });
-  }
-
-  // Wire up each qasidah item
-  document.querySelectorAll('#qosidahList .sholawat-item').forEach(item => {
-    // Init state
-    pdfState.set(item, { loaded: false, pdf: null, current: 1 });
-
-    const header = item.querySelector('.sholawat-header');
-    const panel  = item.querySelector('.sholawat-panel');
-
-    // Toggle open/close on header tap
-    header.addEventListener('click', () => {
-      const isOpen = item.classList.contains('open');
-
-      // Close all others
-      document.querySelectorAll('#qosidahList .sholawat-item.open').forEach(other => {
-        other.classList.remove('open');
-        other.querySelector('.sholawat-panel').style.maxHeight = '';
-      });
-
-      if (!isOpen) {
-        item.classList.add('open');
-        // Set explicit maxHeight to enable CSS transition
-        panel.style.maxHeight = panel.scrollHeight + 300 + 'px';
-        loadPDFForItem(item);
-        // Scroll item into view smoothly
-        setTimeout(() => item.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
-      }
-    });
-
-    // Prev / Next page buttons
-    item.querySelector('.pdf-prev').addEventListener('click', e => {
-      e.stopPropagation();
-      const state = pdfState.get(item);
-      if (state.pdf && state.current > 1) renderPage(item, state.current - 1);
-    });
-    item.querySelector('.pdf-next').addEventListener('click', e => {
-      e.stopPropagation();
-      const state = pdfState.get(item);
-      if (state.pdf && state.current < state.pdf.numPages) renderPage(item, state.current + 1);
-    });
-  });
-
-})();
-</script>
-
+<script src="main.js"></script>
 </body>
 </html>
